@@ -15,7 +15,7 @@ It allows users to interact with trade data stored in either a MySQL database or
 
 ---
 
-##**Difficulties I Faced :**
+**Difficulties I Faced :**
 ---
 
 Since this web app has been deployed on **RENDER**, i tried to migrate sql database there.But it supports **PostgreSQL** and free tier expires in few days.
