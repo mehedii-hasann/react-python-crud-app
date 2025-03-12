@@ -13,3 +13,11 @@ It allows users to interact with trade data stored in either a MySQL database or
 ✅ **JSON Fallback Mode** when a database is not available.  
 ✅ **Bootstrap & Flatpickr** for a responsive and user-friendly UI.  
 
+---
+
+##**Difficulties I Faced :**
+---
+
+Since this web app has been deployed on **RENDER**, i tried to migrate sql database there.But it supports **PostgreSQL** and free tier expires in few days.
+So if no database is detected while using this app, the **JSON** file will do the same duty.
+The sql file is added and it can be used after pulling the project from repository and import the sql file to the **MySql**.
