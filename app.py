@@ -18,7 +18,7 @@ db_config = {
 
 file_path = 'static/stock_market_data.json'
 
-
+table_name = 'trades' # in my case
 
 
 
@@ -39,7 +39,7 @@ def home_page():
         conn = mysql.connector.connect(**db_config)
         cursor = conn.cursor(dictionary=True)
         
-        query = "SELECT * FROM trades"
+        query = "SELECT * FROM "+table_name
         cursor.execute(query)
         data = cursor.fetchall()
         
@@ -56,7 +56,7 @@ def delete_data():
         cursor = conn.cursor()
 
         # Delete the trade from the database
-        query = "DELETE FROM trades WHERE id = %s"
+        query = "DELETE FROM " + table_name +" WHERE id = %s"
         cursor.execute(query, (trade_id,))
 
         # Commit the changes and close the connection
@@ -87,7 +87,7 @@ def update_data():
         conn = mysql.connector.connect(**db_config)
         cursor = conn.cursor()
 
-        query = "UPDATE trades SET "+type+" = %s WHERE id = %s"
+        query = "UPDATE "+ table_name + " SET "+type+" = %s WHERE id = %s"
         cursor.execute(query, (value, id))
 
         conn.commit()
@@ -123,10 +123,7 @@ def insert_data():
         conn = mysql.connector.connect(**db_config)
         cursor = conn.cursor()
 
-        query = """
-        INSERT INTO trades (date, trade_code, high, low, open, close, volume) 
-        VALUES (%s, %s, %s, %s, %s, %s, %s)
-        """
+        query = "INSERT INTO "+ table_name +" (date, trade_code, high, low, open, close, volume) VALUES (%s, %s, %s, %s, %s, %s, %s)"
         cursor.execute(query, (date,trade_code, high, low, open_price, close, volume))
 
         trade_id = cursor.lastrowid
